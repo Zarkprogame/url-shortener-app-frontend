@@ -1,0 +1,66 @@
+<div class="navbar bg-gray-800/80 text-white fixed top-0 left-0 w-full z-50">
+  <div class="w-full mx-auto max-w-7xl flex justify-between items-center px-4">
+
+    <div class="flex items-center">
+
+      <div class="dropdown lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-24 p-2 shadow">
+          <li>
+            <a href="/" class="p-2 mx-2 hover:text-teal-400 transition-colors duration-200">
+              Home
+            </a>
+          </li>
+          <li>
+            <a routerLink="/contac" class="p-2 mx-2 hover:text-teal-400 transition-colors duration-200">
+              Login
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a
+      href="/"
+      class="text-xl font-montserrat cursor-pointer">
+        Zarkprogame<span class="text-emerald-400 font-montserrat">.dev</span>
+      </a>
+
+    </div>
+
+    <div class="navbar-end hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 font-semibold font-montserrat">
+        <li>
+           @if (authService.isAuthenticated()) {
+                <span class="hover:text-teal-400 duration-200">
+                  {{ authService.username() }}
+                </span>
+            }
+            @else {
+              <span class="hover:text-teal-400 duration-200">
+                  Home
+                </span>
+            }
+        </li>
+        <li>
+          @if (authService.isAuthenticated()) {
+            <button (click)="authService.logout()" class="btn-logout hover:text-red-400 transition-colors duration-200">
+                Cerrar Sesión
+            </button>
+        } @else {
+          <a href="https://zarkshortener.onrender.com/api/auth/github" class="p-2 mx-2 hover:text-teal-400 transition-colors duration-200 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 25" fill="currentColor" class="w-5 h-5 mr-1">
+                  <path d="M12 0a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.4.7-4.1-1.7-4.1-1.7-.6-1.4-1.4-1.8-1.4-1.8-1.2-.8.1-.8.1-.8 1.4.1 2.2 1.4 2.2 1.4 1.2 2 3.2 1.4 4.1 1.1.1-.9.5-1.4.8-1.7-3-.3-6.1-1.5-6.1-6.6 0-1.4.5-2.5 1.4-3.4-.1-.3-.6-1.6.1-3.4 0 0 1.1-.3 3.6 1.3A12.7 12.7 0 0 1 12 5.6c1.2 0 2.4.2 3.5.6 2.5-1.6 3.6-1.3 3.6-1.3.7 1.8.2 3.1.1 3.4.9.9 1.4 2 1.4 3.4 0 5.1-3.1 6.3-6.1 6.6.5.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 0z"/>
+              </svg>
+              Login
+          </a>
+        }
+      </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
